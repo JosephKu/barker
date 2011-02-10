@@ -1,0 +1,21 @@
+<h1>Listing Barks</h1>
+
+<table border="1">
+  <tr>
+    <th>Username</th>
+    <th>Status</th>
+  </tr>
+
+  <% @barks.each do |bark| %>
+    <tr>
+      <td><%= bark.user.name %></td>
+      <td><%= bark.status %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+
+<%= link_to 'Send a new bark', new_bark_path %>
+

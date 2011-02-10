@@ -1,5 +1,8 @@
 Barker::Application.routes.draw do
+  get "barks/new"
+
   resources :users
+  resources :barks
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
