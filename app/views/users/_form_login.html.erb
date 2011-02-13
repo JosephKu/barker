@@ -1,0 +1,16 @@
+
+<%= form_for(@user, :url => { :action => "process_login" }) do |f| %>                                                                                                                               
+
+  <div class="field">
+    <%= f.label :name, 'Username:' %><br />
+    <%= f.text_field :name  %>
+  </div>
+  <div class="field">
+    <%= f.label :password, 'Password:' %><br />
+    <%= f.password_field :password %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Sign in' %>
+  </div>
+<% end %>
+

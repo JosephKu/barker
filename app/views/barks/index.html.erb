@@ -1,5 +1,19 @@
 <h1>Listing Barks</h1>
 
+<% if session[:id] %>
+  <h2>
+    <font color="green">Welcome, <%= User.find(session[:id]).fullname %>!</font>
+    <%= link_to '(logout)', users_logout_path %>
+  </h2>
+<% else %>
+  <h2>
+    <font color="green">Please <%= link_to 'Sign Up', new_user_path %> to share your bark!</font>
+  </h2>
+  <h3>
+    Aready have an accout? Please <%= link_to 'Log In', users_login_path %>.</font>
+  </h3>
+<% end %>
+
 <table border="1">
   <tr>
     <th>Username</th>
@@ -16,6 +30,6 @@
 
 <br />
 
-
-<%= link_to 'Send a new bark', new_bark_path %>
-
+<% if session[:id] %>
+  <%= link_to 'Send a new bark', new_bark_path %>
+<% end %>

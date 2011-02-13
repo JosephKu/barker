@@ -25,4 +25,31 @@ class UsersController < ApplicationController
   
   end
 
+  def login
+    @user = User.new
+
+  end
+
+  def process_login
+
+    respond_to do |format|
+      if user = User.authenticate(params[:user])
+        session[:id] = user.id
+        format.html { redirect_to(barks_path) }
+      else
+        format.html { redirect_to(users_login_path, :notice => 'Invalid login.') }
+      end
+    end
+
+  end
+
+  def logout
+    reset_session
+
+    respond_to do |format|
+      format.html { redirect_to(users_login_path, :notice => 'Logged out.') }
+    end
+
+  end
+
 end
