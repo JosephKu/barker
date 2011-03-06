@@ -12,6 +12,9 @@ class BarksController < ApplicationController
 
   def create
     @bark = Bark.new(params[:bark])
+    if session[:id]
+      @bark.user_id = session[:id]
+    end
 
     respond_to do |format|
       if @bark.save
