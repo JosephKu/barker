@@ -1,0 +1,35 @@
+<h1>Timeline</h1>
+
+<% if session[:id] %>
+  <h2>
+    <font color="green"><%= User.find(@user_id).fullname %>'s barks</font>
+    <%= link_to '(logout)', users_logout_path %>
+  </h2>
+<% else %>
+  <h2>
+    <font color="green">Please <%= link_to 'Sign Up', new_user_path %> to share your bark!</font>
+  </h2>
+  <h3>
+    Aready have an accout? Please <%= link_to 'Log In', users_login_path %>.</font>
+  </h3>
+<% end %>
+
+<table border="1">
+  <tr>
+    <th>Status</th>
+    <th>Date</th>
+  </tr>
+
+  <% @barks.each do |bark| %>
+    <tr>
+      <td><%= bark.status %></td>
+      <td><%= bark.created_at %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<% if session[:id] %>
+  <%= link_to 'Send a new bark', new_bark_path %>
+<% end %>
