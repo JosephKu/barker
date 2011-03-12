@@ -3,14 +3,14 @@
 <% if session[:id] %>
   <h2>
     <font color="green"><%= User.find(@user_id).fullname %>'s barks</font>
-    <%= link_to '(logout)', users_logout_path %>
+    <%= link_to '(logout)', logout_users_path %>
   </h2>
 <% else %>
   <h2>
     <font color="green">Please <%= link_to 'Sign Up', new_user_path %> to share your bark!</font>
   </h2>
   <h3>
-    Aready have an accout? Please <%= link_to 'Log In', users_login_path %>.</font>
+    Aready have an accout? Please <%= link_to 'Log In', logout_users_path %>.</font>
   </h3>
 <% end %>
 

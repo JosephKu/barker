@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         session[:id] = user.id
         format.html { redirect_to(barks_path) }
       else
-        format.html { redirect_to(users_login_path, :notice => 'Invalid login.') }
+        format.html { redirect_to(login_users_path, :notice => 'Invalid login.') }
       end
     end
 
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     reset_session
 
     respond_to do |format|
-      format.html { redirect_to(users_login_path, :notice => 'Logged out.') }
+      format.html { redirect_to(login_users_path, :notice => 'Logged out.') }
     end
 
   end

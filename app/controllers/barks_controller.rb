@@ -18,7 +18,7 @@ class BarksController < ApplicationController
 
     respond_to do |format|
       if @bark.save
-        format.html { redirect_to("#{timelines_path}/#{session[:id]}") }
+        format.html { redirect_to(timeline_path session[:id]) }
       else
         format.xml { render :action => "new" }
       end

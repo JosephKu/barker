@@ -1,12 +1,14 @@
 Barker::Application.routes.draw do
 
-  get "users/login"
-  post "users/process_login"
-  get "users/logout"
+  resources :users do
+    collection do
+      get 'login', 'logout'
+      post 'process_login'
+    end
+  end
 
-  resources :users
   resources :barks
-  resources :timelines
+  match 'timelines/:id' => 'timelines#show', :as => :timeline, :via => :get
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

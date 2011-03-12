@@ -4,6 +4,55 @@ Barker
 A practice Twitter-like project for Rails.
 
 
+
+Notes for Ruby Hack Day VI
+--------------------------
+
+* Add a new controller, **Timelines**, and a action, ***show***
+
+        $ rails generate controller Timelines show
+
+
+* Add a resource routing of **Timelines** controller
+  * In ***config/routes.rb***:
+
+        `resources :timelines`
+
+
+* We don't need the entire resourceful route. we only need to pass ***id*** to ***show*** action 
+  * In ***config/routes.rb***, replace
+
+        `resources :timelines`
+
+        by:
+
+        `match 'timelines/:id' => 'timelines#show', :as => :timeline, :via => :get`
+
+
+* Re-write the routing of **Users** controller
+
+        resources :users do
+            collection do
+                get 'login', 'logout'
+                post 'process_login'
+            end
+        end
+
+
+* Use the better methods to redirect to ***'timelines/:id'***
+
+        format.html { redirect_to(:controller => "timelines", :action => "show", :id => session[:id]) }
+
+    or:
+
+        format.html { redirect_to(timeline_path :id => session[:id]) }
+
+    or:
+
+        format.html { redirect_to(timeline_path session[:id]) }
+
+
+
 Notes for Ruby Hack Day V
 -------------------------
 
